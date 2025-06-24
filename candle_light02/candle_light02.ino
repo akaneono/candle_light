@@ -36,19 +36,19 @@ void setup() {
 
 void loop() {
   if (random(0, 100) < 10) { 
-    target_value = random(25, 100) / 100.0;  // 扩大波动范围
+    target_value = random(25, 100) / 100.0;  
   }
 
-  value += (target_value - value) * 0.06;  // 提高主亮度变化速率
+  value += (target_value - value) * 0.06;  
 
-  float flicker = (random(-35, 46)) / 255.0;  // 放大flicker幅度
+  float flicker = (random(-35, 46)) / 255.0; 
   float combined_value = value + flicker;
 
   if (combined_value < 0.0) combined_value = 0.0;
   if (combined_value > 1.0) combined_value = 1.0;
 
-  // 暂时去掉二次曲线公式以观察效果
-  // 如果想再加回来可恢复这一段
+  // 暂时去掉曲线公式观察效果
+  
   /*
   if (combined_value < 0.5) {
     combined_value = combined_value + 2.0 * combined_value * combined_value;
@@ -63,5 +63,5 @@ void loop() {
   analogWrite(led_pin_1, pgm_read_byte(&(gamma8[value_1])));
   analogWrite(led_pin_2, pgm_read_byte(&(gamma8[value_2])));
 
-  delay(80);  // 刷新慢一点，更自然
+  delay(80);  
 }
